@@ -2,7 +2,8 @@
     "name": "Scripts",
     "rootNamespace": "",
     "references": [
-        "GUID:b0d18298b04f152448433973a3f958b3"
+        "GUID:b0d18298b04f152448433973a3f958b3",
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
