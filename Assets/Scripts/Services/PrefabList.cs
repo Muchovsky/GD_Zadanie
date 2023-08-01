@@ -8,7 +8,7 @@ public class PrefabList : ScriptableObject
     [SerializeField] List<PrefabTouple> list = new List<PrefabTouple>();
     public List<PrefabTouple> PrefabsList => list;
 
-    public PrefabTouple GetByType(PrefabNameEnum name)
+    public PrefabTouple GetByName(PrefabNameEnum name)
     {
         return list.Find(a => a.Name == name);
     }
