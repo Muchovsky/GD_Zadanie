@@ -38,5 +38,4 @@ public class LoadingIndicator : MonoBehaviour
         loadingSequende.Kill();
     }
 
-
 }
