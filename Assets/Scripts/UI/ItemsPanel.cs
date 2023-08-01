@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class ItemsPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Item itemPrefab;
+    List<Item> items;
+    public void Init(List<Item> items)
     {
-        
+        CreateAttributes(items);
     }
 
-    // Update is called once per frame
-    void Update()
+    void CreateAttributes(List<Item> items)
     {
-        
+        PopulateList(items.Count);
+    }
+    void PopulateList(int count)
+    {
+        while (items.Count < count)
+        {
+            var prefab = Instantiate(itemPrefab, transform);
+            items.Add(prefab);
+        }
     }
 }
