@@ -285,6 +285,7 @@ MonoBehaviour:
   badgeImage: {fileID: 6085761714255611647}
   glowImage: {fileID: 6085761714640428855}
   description: {fileID: 5564125358235762023}
+  number: {fileID: 1376641126465713121}
 --- !u!1 &6479863068659899191
 GameObject:
   m_ObjectHideFlags: 0
