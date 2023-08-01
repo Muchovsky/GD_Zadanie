@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -29,14 +27,15 @@ public class NavigationButtonsPanel : MonoBehaviour
 
     void SetButtonsAction()
     {
-        previousButton.onClick.AddListener(() => Test());
+        previousButton.onClick.AddListener(() => ShowLoading());
         nextButton.onClick.AddListener(() => Debug.Log("ActionNEeded"));
     }
 
     [ContextMenu("test")]
-    void Test()
+    void ShowLoading()
     {
-        prefabManager.GetPrefab<LoadingUI>(PrefabNameEnum.LOADINGSCREENUI,null);
+        var loadingScreen= prefabManager.GetPrefab<LoadingUI>(PrefabNameEnum.LOADINGSCREENUI, null);
+        loadingScreen.Show();
     }
 
 

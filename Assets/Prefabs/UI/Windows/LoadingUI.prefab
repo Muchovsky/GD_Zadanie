@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 4278733038473135490}
   - component: {fileID: 4278733038473135491}
   - component: {fileID: 4278733038473135492}
+  - component: {fileID: 1874985301660658023}
   m_Layer: 5
   m_Name: LoadingUI
   m_TagString: Untagged
@@ -131,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingIndicator: {fileID: 3427286839133991721}
+  canvasGroup: {fileID: 1874985301660658023}
 --- !u!223 &4278733038473135490
 Canvas:
   m_ObjectHideFlags: 0
@@ -192,6 +194,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &1874985301660658023
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4278733038473135493}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &7395273477669857910
 PrefabInstance:
   m_ObjectHideFlags: 0
