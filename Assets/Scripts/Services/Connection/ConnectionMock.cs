@@ -1,26 +1,15 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
-public class ConnectionMock : MonoBehaviour
+public class ConnectionMock
 {
     CancellationTokenSource cancellationTokenSource;
     [Inject]
     DataServerMock dataServerMock;
-    [Inject]
-    PrefabManager prefabManager;
-
-    public async Task<int> InitializeAsync()
-    {
-        var loadingScreen = prefabManager.GetPrefab<LoadingUI>(PrefabNameEnum.LOADINGSCREENUI, null);
-        loadingScreen.Show();
-        var x = await RequestData();
-        loadingScreen.Hide();
-        Debug.Log(x);
-        return x;
-    }
-    async Task<int> RequestData()
+    public async Task<int> RequestNumberOfItems()
     {
         cancellationTokenSource = new CancellationTokenSource();
         CancellationToken token = cancellationTokenSource.Token;
@@ -42,5 +31,25 @@ public class ConnectionMock : MonoBehaviour
         }
     }
 
-
+    public async Task<IList<DataItem>> RequestItems(int index, int count)
+    {
+        cancellationTokenSource = new CancellationTokenSource();
+        CancellationToken token = cancellationTokenSource.Token;
+        try
+        {
+            var task = dataServerMock.RequestData(index, count, token);
+            var result = await task;
+            return result;
+        }
+        catch
+        {
+            Debug.Log("Task was cancelled!");
+            return null;
+        }
+        finally
+        {
+            cancellationTokenSource.Dispose();
+            cancellationTokenSource = null;
+        }
+    }
 }

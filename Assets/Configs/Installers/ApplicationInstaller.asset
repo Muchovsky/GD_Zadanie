@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ApplicationInstaller
   m_EditorClassIdentifier: 
   prefabList: {fileID: 11400000, guid: a20de1766a54ea4468416dfd5e1953c9, type: 2}
+  itemSpriteList: {fileID: 11400000, guid: 1976f4dd871104148acd396a70e2814d, type: 2}
