@@ -9,8 +9,12 @@ public class ApplicationInstaller : ScriptableObjectInstaller<ApplicationInstall
     [SerializeField] ItemSpriteList itemSpriteList;
     public override void InstallBindings()
     {
-        Container.Bind<PrefabManager>().AsSingle();
+        SignalBusInstaller.Install(Container);
+        Container.Bind<PrefabManager>().AsSingle().NonLazy();
         Container.Bind<PrefabList>().FromInstance(prefabList).AsSingle();
         Container.Bind<ItemSpriteList>().FromInstance(itemSpriteList).AsSingle();
+        Container.Bind<ConnectionMock>().AsSingle();
+        ButtonClickedSignal.DeclareSignals(Container);
+        GameUISignals.DeclareSignals(Container);
     }
 }

@@ -1,6 +1,6 @@
 public enum PrefabNameEnum
 {
     NONE,
-    LOADINGSCREENUI
-
+    LOADINGSCREENUI,
+    ITEM
 }
