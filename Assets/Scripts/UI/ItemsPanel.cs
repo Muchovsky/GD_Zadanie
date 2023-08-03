@@ -14,13 +14,11 @@ public class ItemsPanel : MonoBehaviour
     void Awake()
     {
         signalBus.Subscribe<GameUISignals.TabChanged>(OnTabChanged);
-
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         signalBus.Unsubscribe<GameUISignals.TabChanged>(OnTabChanged);
-
     }
 
     public void Init(List<DataItem> items)

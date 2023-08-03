@@ -25,7 +25,7 @@ public class NavigationButtonsPanel : MonoBehaviour
 
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         signalBus.Unsubscribe<GameUISignals.TabChanged>(OnTabChanged);
 
