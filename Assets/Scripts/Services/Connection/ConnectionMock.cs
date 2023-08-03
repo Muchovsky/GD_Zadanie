@@ -7,8 +7,9 @@ using Zenject;
 public class ConnectionMock
 {
     CancellationTokenSource cancellationTokenSource;
-    [Inject]
-    DataServerMock dataServerMock;
+
+    [Inject] DataServerMock dataServerMock;
+
     public async Task<int> RequestNumberOfItems()
     {
         cancellationTokenSource = new CancellationTokenSource();

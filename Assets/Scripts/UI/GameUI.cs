@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
-
 public class GameUI : MonoBehaviour
 {
     [SerializeField] ItemsPanel itemsPanel;
@@ -22,16 +21,18 @@ public class GameUI : MonoBehaviour
         signalBus.Subscribe<ButtonClickedSignal.NextButtonClicked>(OnNextButtonClicked);
     }
 
+    private async void Start()
+    {
+        await Initialize();
+    }
+
     private void OnDisable()
     {
         signalBus.Unsubscribe<ButtonClickedSignal.PreviousButtonClicked>(OnPreviousButtonClicked);
         signalBus.Unsubscribe<ButtonClickedSignal.NextButtonClicked>(OnNextButtonClicked);
     }
 
-    private async void Start()
-    {
-        await Initialize();
-    }
+
 
     async Task Initialize()
     {

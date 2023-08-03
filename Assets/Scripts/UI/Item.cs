@@ -7,11 +7,12 @@ using static DataItem;
 public class Item : MonoBehaviour
 {
     [SerializeField] Image badgeImage;
-    [SerializeField] Image glowImage;
     [SerializeField] TextMeshProUGUI description;
+    [SerializeField] Image glowImage;
     [SerializeField] TextMeshProUGUI number;
 
     [Inject] ItemSpriteList spriteList;
+
     public void Init(int number, CategoryType type, string descriptuon, bool isSpecial)
     {
         this.number.text = number.ToString();

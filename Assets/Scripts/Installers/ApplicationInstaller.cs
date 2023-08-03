@@ -2,11 +2,11 @@ using UnityEngine;
 using Zenject;
 
 [CreateAssetMenu(fileName = "ApplicationInstaller", menuName = "Installers/ApplicationInstaller")]
-
 public class ApplicationInstaller : ScriptableObjectInstaller<ApplicationInstaller>
 {
-    [SerializeField] PrefabList prefabList;
     [SerializeField] ItemSpriteList itemSpriteList;
+    [SerializeField] PrefabList prefabList;
+
     public override void InstallBindings()
     {
         SignalBusInstaller.Install(Container);
