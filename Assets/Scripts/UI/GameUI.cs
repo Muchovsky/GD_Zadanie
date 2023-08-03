@@ -32,8 +32,6 @@ public class GameUI : MonoBehaviour
         signalBus.Unsubscribe<ButtonClickedSignal.NextButtonClicked>(OnNextButtonClicked);
     }
 
-
-
     async Task Initialize()
     {
         loadingScreen = prefabManager.GetPrefab<LoadingUI>(PrefabNameEnum.LOADINGSCREENUI, null);

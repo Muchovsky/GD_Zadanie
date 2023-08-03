@@ -22,7 +22,7 @@ public class ConnectionMock
         }
         catch
         {
-            Debug.Log("Task was cancelled!");
+            Debug.Log("Can't connect to server!");
             return -1;
         }
         finally
@@ -44,7 +44,7 @@ public class ConnectionMock
         }
         catch
         {
-            Debug.Log("Task was cancelled!");
+            Debug.Log("Can't recive data from server!");
             return null;
         }
         finally

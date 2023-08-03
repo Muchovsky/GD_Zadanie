@@ -7,8 +7,8 @@ using static DataItem;
 public class Item : MonoBehaviour
 {
     [SerializeField] Image badgeImage;
-    [SerializeField] TextMeshProUGUI description;
     [SerializeField] Image glowImage;
+    [SerializeField] TextMeshProUGUI description;
     [SerializeField] TextMeshProUGUI number;
 
     [Inject] ItemSpriteList spriteList;
