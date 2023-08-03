@@ -28,7 +28,6 @@ public class GameUI : MonoBehaviour
         signalBus.Unsubscribe<ButtonClickedSignal.NextButtonClicked>(OnNextButtonClicked);
     }
 
-
     private async void Start()
     {
         await Initialize();

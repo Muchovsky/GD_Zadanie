@@ -248,7 +248,6 @@ GameObject:
   - component: {fileID: 284216613}
   - component: {fileID: 284216612}
   - component: {fileID: 284216611}
-  - component: {fileID: 284216615}
   - component: {fileID: 284216616}
   m_Layer: 5
   m_Name: GameUI
@@ -341,32 +340,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &284216615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 284216610}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 20
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!114 &284216616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,7 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f983f67da68daf94d9dadfdeb801fb89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 6091484450697853370, guid: cd6ccd22d95e2004ba36bbd9ef240045, type: 3}
+  layoutGroup: {fileID: 600003530}
 --- !u!1 &1184019863
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +672,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1358165560}
-  - component: {fileID: 1358165563}
   - component: {fileID: 1358165564}
   m_Layer: 5
   m_Name: NavigationButtonsParent
@@ -730,32 +702,6 @@ RectTransform:
   m_AnchoredPosition: {x: 540, y: -1417.5}
   m_SizeDelta: {x: 900, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1358165563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358165559}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 20
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!114 &1358165564
 MonoBehaviour:
   m_ObjectHideFlags: 0

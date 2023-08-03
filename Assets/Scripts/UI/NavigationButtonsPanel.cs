@@ -22,27 +22,20 @@ public class NavigationButtonsPanel : MonoBehaviour
     void Awake()
     {
         signalBus.Subscribe<GameUISignals.TabChanged>(OnTabChanged);
-
     }
-
     void OnDisable()
     {
         signalBus.Unsubscribe<GameUISignals.TabChanged>(OnTabChanged);
-
     }
-
     void OnTabChanged(GameUISignals.TabChanged signalData)
     {
         currentTab = signalData.CurrentTab;
         SetButtonsStatus();
     }
-
-
     void OnDestroy()
     {
         ClearButtonsAction();
     }
-
     void SetButtonsStatus()
     {
         if (currentTab == firstTab)
@@ -58,13 +51,11 @@ public class NavigationButtonsPanel : MonoBehaviour
         previousButton.interactable = true;
         nextButton.interactable = true;
     }
-
     void SetButtonsAction()
     {
         previousButton.onClick.AddListener(() => signalBus.Fire(new ButtonClickedSignal.PreviousButtonClicked()));
         nextButton.onClick.AddListener(() => signalBus.Fire(new ButtonClickedSignal.NextButtonClicked()));
     }
-
     void ClearButtonsAction()
     {
         previousButton.onClick.RemoveAllListeners();
