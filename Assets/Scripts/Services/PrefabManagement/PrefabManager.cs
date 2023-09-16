@@ -1,53 +1,60 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Zenject;
 
 public class PrefabManager
 {
-    PrefabList prefabList;
     SceneContext sceneContext;
-    Dictionary<PrefabNameEnum, GameObject> windowsPool = new();
+    List<GameObject> windowsPool = new();
+    AsyncOperationHandle<GameObject> opHandle;
 
     [Inject]
-    public PrefabManager(PrefabList prefabList, SceneContext sceneContext)
+    public PrefabManager(SceneContext sceneContext)
     {
-        this.prefabList = prefabList;
         this.sceneContext = sceneContext;
     }
 
-    public T GetPrefab<T>(PrefabNameEnum prefabName, Transform parent) where T : Component
+    public async Task<T> GetPrefabAsync<T>(string prefabName, Transform parent) where T : Component
     {
-        var newGameObject = GetGameObject<T>(prefabName, parent);
-        return newGameObject.GetComponent<T>();
-    }
-
-    GameObject GetGameObject<T>(PrefabNameEnum prefabName, Transform parent) where T : Component
-    {
-        var prefab = prefabList.GetByName(prefabName);
-        if (prefab == null || prefab.GameObject == null)
+        if (!windowsPool.FirstOrDefault(x => x.gameObject.name == prefabName))
         {
-            Debug.LogErrorFormat("Trying Instantiate {0} failed", prefabName.ToString());
-            return null;
-        }
-
-        if (!windowsPool.ContainsKey(prefabName))
-        {
-            var gameObject = GameObject.Instantiate(prefab.GameObject, parent);
-            sceneContext.Container.InjectGameObject(gameObject);
-            if (gameObject.GetComponent<T>() is IWindow)
+            opHandle = Addressables.LoadAssetAsync<GameObject>(prefabName);
+            await opHandle.Task;
+            if (opHandle.Status == AsyncOperationStatus.Succeeded)
             {
-                windowsPool.Add(prefabName, gameObject);
+                GameObject obj = opHandle.Result;
+
+                GameObject gameObject = GameObject.Instantiate(obj, parent);
+                sceneContext.Container.InjectGameObject(gameObject);
+                if (gameObject.GetComponent<T>() is IWindow)
+                {
+                    windowsPool.Add(gameObject);
+                }
+                return gameObject.GetComponent<T>();
             }
-            return gameObject;
+            else
+            {
+                Debug.LogError($"Trying to Instantiate {prefabName} failed");
+                return null;
+            }
         }
         else
         {
-            return GetFromPool(prefabName);
+            return GetFromPool(prefabName).GetComponent<T>(); ;
         }
     }
 
-    GameObject GetFromPool(PrefabNameEnum prefabName)
+    GameObject GetFromPool(string prefabName)
     {
-        return windowsPool.GetValueOrDefault(prefabName);
+        return windowsPool.FirstOrDefault(x => x.gameObject.name == prefabName);
+    }
+
+    private void OnDestroy()
+    {
+        Addressables.Release(opHandle);
     }
 }

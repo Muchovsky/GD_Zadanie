@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -26,30 +27,25 @@ public class ItemsPanel : MonoBehaviour
         CreateAttributes(itemsList);
     }
 
-    public void UpdateItems(IList<DataItem> items)
-    {
-        List<DataItem> itemsList = new List<DataItem>(items);
-        HideExcessItems(items.Count);
-        InitItems(itemsList);
-    }
-
     void OnTabChanged(GameUISignals.TabChanged signalData)
     {
         currentTab = signalData.CurrentTab;
     }
 
-    void CreateAttributes(List<DataItem> items)
+    async void CreateAttributes(List<DataItem> items)
     {
-        PopulateList(items.Count);
+        var populateTask = PopulateList(items.Count);
+        await populateTask;
         HideExcessItems(items.Count);
-        InitItems(items);
+        var initTask = InitItems(items);
+        await initTask;
     }
 
-    void PopulateList(int count)
+    async Task PopulateList(int count)
     {
         while (items.Count < count)
         {
-            var prefab = prefabManager.GetPrefab<Item>(PrefabNameEnum.ITEM, transform);
+            Item prefab = await prefabManager.GetPrefabAsync<Item>("Item", transform);
             items.Add(prefab);
         }
     }
@@ -62,11 +58,11 @@ public class ItemsPanel : MonoBehaviour
         }
     }
 
-    void InitItems(List<DataItem> dataItems)
+    async Task InitItems(List<DataItem> dataItems)
     {
         for (int i = 0; i < dataItems.Count; i++)
         {
-            items[i].Init(CalculateIndex(i), dataItems[i]);
+            await items[i].Init(CalculateIndex(i), dataItems[i]);
             items[i].gameObject.SetActive(true);
         }
     }

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Images
+  m_EditorClassIdentifier: 
+  m_GroupName: Images
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a80bec9e2efecbd499591c01cd654161
+  m_SerializeEntries:
+  - m_GUID: 247a97b607ccbb748a112e6a04c85611
+    m_Address: BLUE
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIElements
+  - m_GUID: 4d29966001e7aa742bc4dc92a160842e
+    m_Address: GREEN
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIElements
+  - m_GUID: bfc5edea3409c73429df7781b0cf3809
+    m_Address: RED
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIElements
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8617e26680f90c448924cbd7c33683eb, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8fa6aa443101ba14b9d6980e087a9c4d, type: 2}
+    - {fileID: 11400000, guid: abd885e784402d2479c3980945922982, type: 2}

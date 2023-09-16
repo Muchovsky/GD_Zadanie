@@ -34,7 +34,7 @@ public class GameUI : MonoBehaviour
 
     async Task Initialize()
     {
-        loadingScreen = prefabManager.GetPrefab<LoadingUI>(PrefabNameEnum.LOADINGSCREENUI, null);
+        loadingScreen = await prefabManager.GetPrefabAsync<LoadingUI>("LoadingUI", null);
         loadingScreen.Show();
         totlalNumberOfItems = await connectionMock.RequestNumberOfItems();
         SetNumberOfTabs(totlalNumberOfItems);
